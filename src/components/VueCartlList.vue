@@ -2,7 +2,7 @@
   <div class="cart-list">
     <div class="cart-list__header">
       <span class="cart-list__count">{{ `${count} ${countEnding}` }}</span>
-      <button class="cart-list__clear">очистить список</button>
+      <button @click="clearCart" class="cart-list__clear">очистить список</button>
     </div>
     <hr class="cart-list__divider">
     <div class="cart-list__content">
@@ -17,7 +17,7 @@
 
 <script>
 import VueCartItem from "@/components/VueCartItem";
-import {mapGetters} from "vuex";
+import {mapActions, mapGetters} from "vuex";
 
 export default {
   name: "VueCartlList",
@@ -31,6 +31,11 @@ export default {
       count: 'products/cartCount',
       countEnding: 'products/cartCountEnding'
     }),
+  },
+  methods: {
+    ...mapActions({
+      clearCart: 'products/clearCart',
+    })
   },
 }
 </script>
@@ -63,6 +68,10 @@ export default {
     font-size: 14px;
     line-height: 112%;
     opacity: 0.4;
+
+    &:hover {
+      text-decoration: underline;
+    }
   }
 
 

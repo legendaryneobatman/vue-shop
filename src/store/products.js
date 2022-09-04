@@ -46,6 +46,9 @@ export default {
       }
       state.selectedProducts[productIndex].count = count;
     },
+    CLEAR_CART(state){
+      state.selectedProducts = [];
+    },
     UPDATE_FILTER_OPTIONS(state, {key, value}) {
       if (value) {
         state.selectedFilterOptions = [...state.selectedFilterOptions, switchesOptions.find(option => option.value === key)]
@@ -75,6 +78,9 @@ export default {
     },
     filteredProducts(context) {
       context.commit('FILTERED_PRODUCTS')
+    },
+    clearCart(context) {
+      context.commit('CLEAR_CART')
     },
     updateFilterOptions(context, payload) {
       context.commit('UPDATE_FILTER_OPTIONS', payload)
